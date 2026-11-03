@@ -3,8 +3,8 @@ const words = ['Software', 'Mobile apps', 'Basketball', 'AI', 'Gaming', 'Hardwar
 export function Marquee() {
   const row = [...words, ...words]
   return (
-    <div aria-hidden="true" className="overflow-hidden border-y border-border py-5 md:py-7">
-      <div className="marquee-track flex w-max items-center">
+    <div aria-hidden="true" className="group overflow-hidden border-y border-border py-5 md:py-7">
+      <div className="marquee-track flex w-max items-center group-hover:[animation-play-state:paused]">
         {row.map((word, i) => (
           <span key={i} className="flex items-center">
             <span

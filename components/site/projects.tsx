@@ -13,7 +13,7 @@ const visuals: Record<ProjectVisual, React.ComponentType> = {
 
 export function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-[1440px] px-5 py-24 md:px-10 md:py-36">
+    <section id="projects" className="section-glow mx-auto max-w-[1440px] px-5 py-24 md:px-10 md:py-36">
       <div className="grid gap-8 md:grid-cols-12 md:items-end">
         <div className="md:col-span-8">
           <Reveal>
@@ -27,8 +27,8 @@ export function Projects() {
         </div>
         <Reveal delay={160} className="md:col-span-4">
           <p className="max-w-sm text-pretty leading-relaxed text-muted-foreground md:ml-auto">
-            Personal projects that started with a small annoyance or a fun idea. Both are in progress — both are
-            interactive below.
+            Personal projects born from real-world utility and interactive design. Live demos and active work in
+            progress below.
           </p>
         </Reveal>
       </div>
@@ -49,9 +49,11 @@ function ProjectShowcase({ project, flipped }: { project: Project; flipped: bool
   return (
     <article aria-labelledby={`${project.id}-title`} className="grid gap-8 lg:grid-cols-12 lg:gap-12">
       <Reveal className={cn('lg:col-span-7', flipped && 'lg:order-2 lg:col-start-6')}>
-        <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-border bg-card sm:aspect-[4/3] md:aspect-[16/11]">
+        <div className="group/preview relative aspect-[4/5] overflow-hidden rounded-md border border-border bg-card transition-all duration-500 hover:border-signal/40 hover:shadow-[0_20px_50px_rgba(0,0,0,0.6),0_0_30px_rgba(255,106,43,0.1)] sm:aspect-[4/3] md:aspect-[16/11]">
           <Visual />
-          <span className="label pointer-events-none absolute bottom-4 right-4">{project.index} / Preview</span>
+          <span className="label pointer-events-none absolute bottom-4 right-4 rounded-full border border-foreground/15 bg-background/80 px-2.5 py-1 backdrop-blur-sm transition-colors group-hover/preview:border-signal/50 group-hover/preview:text-foreground">
+            {project.index} / Preview
+          </span>
         </div>
       </Reveal>
 
@@ -75,7 +77,10 @@ function ProjectShowcase({ project, flipped }: { project: Project; flipped: bool
           <dl className="mt-8 grid grid-cols-2 gap-y-4 border-t border-border pt-6 text-sm">
             <dt className="label">Status</dt>
             <dd className="flex items-center gap-2">
-              <span className="size-1.5 rounded-full bg-signal" aria-hidden="true" />
+              <span className="relative flex size-2" aria-hidden="true">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-signal opacity-75" />
+                <span className="relative inline-flex size-2 rounded-full bg-signal" />
+              </span>
               {project.status}
             </dd>
             <dt className="label">Platform</dt>
@@ -83,17 +88,26 @@ function ProjectShowcase({ project, flipped }: { project: Project; flipped: bool
             {project.stack.length > 0 && (
               <>
                 <dt className="label">Stack</dt>
-                <dd>{project.stack.join(', ')}</dd>
+                <dd className="flex flex-wrap gap-1.5">
+                  {project.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="inline-block rounded-md border border-foreground/15 bg-secondary/80 px-2 py-0.5 text-xs text-foreground/90 transition-colors hover:border-signal/40"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </dd>
               </>
             )}
           </dl>
 
           <details className="group mt-6 border-t border-border pt-6">
-            <summary className="flex cursor-pointer list-none items-center justify-between text-sm [&::-webkit-details-marker]:hidden">
-              <span className="label text-foreground">Features · {project.features.length}</span>
+            <summary className="flex cursor-pointer list-none items-center justify-between text-sm transition-colors hover:text-signal [&::-webkit-details-marker]:hidden">
+              <span className="label text-foreground group-hover:text-signal transition-colors">Features · {project.features.length}</span>
               <span
                 aria-hidden="true"
-                className="grid size-6 place-items-center rounded-full border border-border text-xs transition-transform duration-300 group-open:rotate-45"
+                className="grid size-6 place-items-center rounded-full border border-border text-xs transition-all duration-300 group-hover:border-signal group-hover:text-signal group-open:rotate-45"
               >
                 +
               </span>
@@ -108,18 +122,29 @@ function ProjectShowcase({ project, flipped }: { project: Project; flipped: bool
             </ul>
           </details>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             {project.links.length > 0 ? (
-              project.links.map((link) => (
+              project.links.map((link, i) => (
                 <a
                   key={link.href}
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group inline-flex h-11 items-center gap-2 rounded-full border border-foreground/20 px-5 text-sm transition-colors hover:border-signal hover:text-signal"
+                  className={cn(
+                    'group inline-flex h-12 items-center gap-2.5 rounded-full px-6 text-sm font-semibold transition-all duration-300 active:scale-[0.98]',
+                    i === 0
+                      ? 'bg-signal text-background shadow-lg shadow-signal/25 hover:bg-signal/90 hover:shadow-signal/40 hover:-translate-y-0.5'
+                      : 'border border-foreground/20 text-foreground hover:border-signal hover:text-signal hover:-translate-y-0.5',
+                  )}
                 >
-                  {link.label}
-                  <ArrowUpRight className="size-4" aria-hidden="true" />
+                  {i === 0 && (
+                    <span className="relative flex size-2" aria-hidden="true">
+                      <span className="absolute inline-flex size-full animate-ping rounded-full bg-background/70 opacity-75" />
+                      <span className="relative inline-flex size-2 rounded-full bg-background" />
+                    </span>
+                  )}
+                  <span>{link.label}</span>
+                  <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
                 </a>
               ))
             ) : (
@@ -137,7 +162,7 @@ function ProjectShowcase({ project, flipped }: { project: Project; flipped: bool
 function FutureSlot({ index }: { index: string }) {
   return (
     <Reveal>
-      <div className="group relative grid gap-6 overflow-hidden rounded-sm border border-dashed border-foreground/20 p-8 transition-colors duration-500 hover:border-signal/60 md:grid-cols-12 md:items-center md:p-14">
+      <div className="group relative grid gap-6 overflow-hidden rounded-md border border-dashed border-foreground/20 p-8 transition-all duration-500 hover:border-signal/60 hover:bg-card/30 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5),0_0_25px_rgba(255,106,43,0.08)] hover:-translate-y-1 md:grid-cols-12 md:items-center md:p-14">
         <span className="font-serif text-6xl italic leading-none text-muted-foreground transition-colors duration-500 group-hover:text-signal md:col-span-2 md:text-7xl">
           {index}
         </span>
@@ -153,7 +178,7 @@ function FutureSlot({ index }: { index: string }) {
             next.
           </p>
         </div>
-        <p className="label md:col-span-3 md:text-right">In the works</p>
+        <p className="label md:col-span-3 md:text-right transition-colors group-hover:text-signal/80">In the works</p>
       </div>
     </Reveal>
   )

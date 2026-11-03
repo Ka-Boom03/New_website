@@ -51,12 +51,14 @@ export function About() {
             </Reveal>
           </div>
 
-          <Reveal delay={100} className="mt-14 flex flex-wrap items-baseline gap-x-6 gap-y-2 md:mt-20">
-            <span className="label">Currently into</span>
-            {focusAreas.map((area, i) => (
-              <span key={area} className="text-foreground">
+          <Reveal delay={100} className="mt-14 flex flex-wrap items-center gap-2.5 md:mt-20">
+            <span className="label mr-2">Currently into</span>
+            {focusAreas.map((area) => (
+              <span
+                key={area}
+                className="inline-flex items-center rounded-full border border-foreground/15 bg-card/40 px-3.5 py-1 text-sm text-foreground/90 transition-all duration-300 hover:border-signal/50 hover:text-signal hover:-translate-y-0.5"
+              >
                 {area}
-                {i < focusAreas.length - 1 && <span className="ml-6 text-muted-foreground/40">/</span>}
               </span>
             ))}
           </Reveal>

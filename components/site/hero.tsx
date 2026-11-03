@@ -59,7 +59,7 @@ export function Hero() {
             <div className="flex flex-wrap items-center gap-3">
               <a
                 href="#projects"
-                className="group inline-flex h-12 items-center gap-3 rounded-full bg-foreground pl-6 pr-2 text-sm font-medium text-background transition-colors hover:bg-signal"
+                className="group inline-flex h-12 items-center gap-3 rounded-full bg-foreground pl-6 pr-2 text-sm font-medium text-background shadow-md transition-all duration-300 hover:bg-signal hover:shadow-lg hover:shadow-signal/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
               >
                 Explore the work
                 <span className="grid size-8 place-items-center rounded-full bg-background text-foreground transition-transform duration-500 group-hover:rotate-[-45deg]">
@@ -68,7 +68,7 @@ export function Hero() {
               </a>
               <a
                 href={`mailto:${profile.email}`}
-                className="group inline-flex h-12 items-center gap-2 rounded-full border border-foreground/20 px-6 text-sm transition-colors hover:border-foreground"
+                className="group inline-flex h-12 items-center gap-2 rounded-full border border-foreground/20 px-6 text-sm transition-all duration-300 hover:border-signal hover:text-signal hover:shadow-[0_0_20px_rgba(255,106,43,0.15)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
               >
                 {profile.email}
                 <ArrowUpRight

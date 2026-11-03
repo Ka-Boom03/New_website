@@ -23,7 +23,7 @@ export function Contact() {
               className="absolute -bottom-1 left-0 h-0.5 w-full origin-right scale-x-0 bg-signal transition-transform duration-500 group-hover:origin-left group-hover:scale-x-100"
             />
           </span>
-          <span className="grid size-12 shrink-0 place-items-center rounded-full border border-foreground/20 transition-all duration-500 group-hover:rotate-45 group-hover:border-signal group-hover:bg-signal group-hover:text-background md:size-16">
+          <span className="grid size-12 shrink-0 place-items-center rounded-full border border-foreground/20 transition-all duration-500 group-hover:rotate-45 group-hover:border-signal group-hover:bg-signal group-hover:text-background group-hover:shadow-[0_0_30px_rgba(255,106,43,0.35)] md:size-16">
             <ArrowUpRight className="size-5 md:size-6" aria-hidden="true" />
           </span>
         </a>
@@ -36,7 +36,7 @@ export function Contact() {
         <p className="tabular-nums">
           Local time · <LocalTime timeZone={profile.timeZone} />
         </p>
-        <a href="#home" className="transition-colors hover:text-foreground">
+        <a href="#home" className="inline-flex items-center gap-1 transition-all duration-300 hover:text-signal hover:-translate-y-0.5">
           Back to top ↑
         </a>
       </footer>

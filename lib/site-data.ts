@@ -51,26 +51,27 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: 'qr-storage',
+    id: 'bintag',
     index: '01',
-    title: 'QR Household Storage Manager',
-    category: 'Product · Utility',
-    status: 'In development',
-    platform: 'Mobile app + web view',
-    summary: 'Know what’s inside every box without opening a single one.',
+    title: 'BinTag',
+    category: 'Inventory Management · Web & Mobile',
+    status: 'Live · In active development',
+    platform: 'Web app + mobile scanner',
+    summary: 'Know what’s inside every storage box without opening a single one.',
     description:
-      'A small, practical problem: boxes pile up in the attic, the garage, under the bed, and nobody remembers what went where. Each box gets a QR code. Scan it with your phone and you see exactly what’s inside — photos, descriptions, and where the box lives. Households can be shared, and anyone without the app can still open a web view of a box’s contents.',
+      'A physical inventory management system designed to eliminate lost storage items. Each storage box or bin gets a unique QR label. Scan it with your phone to instantly view and manage contents—including item photos, quantities, categories, and exact storage locations. Anyone can scan to preview contents, while household members can organize and update items in real time.',
     features: [
-      'Create and manage storage boxes',
-      'Assign and scan QR codes',
-      'Items with photos and descriptions',
-      'Organise items across boxes',
-      'Track box locations',
+      'Unique QR code generation & scanning',
+      'Visual box inventory with photos & descriptions',
+      'Smart search across all household bins',
+      'Location and room tracking (garage, attic, closet)',
       'Shared households for multiple users',
-      'Web view for people without the app',
+      'Instant public web view without app install',
     ],
-    stack: [],
-    links: [],
+    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+    links: [
+      { label: 'Launch BinTag App', href: 'https://bintag.mailat.dev' },
+    ],
     visual: 'qr-storage',
   },
   {
@@ -139,18 +140,27 @@ export const games: Game[] = [
 export type Photo = { src: string; alt: string; caption: string }
 
 /**
- * Personal hiking photos. Drop the files into /public/images/hiking/ and
- * point these entries at them (up to four are laid out).
+ * Personal hiking photos from Carpathian mountain trails and peaks.
  */
 export const hikingPhotos: Photo[] = [
   {
-    src: '/images/ridge.png',
-    alt: 'A narrow hiking trail along a misty mountain ridge in the early morning',
-    caption: 'Ridge line',
+    src: '/images/hiking/peaks.jpg',
+    alt: 'Dramatic Carpathian mountain ridge with snow-dusted peaks and evergreen pine forest under storm clouds',
+    caption: 'Carpathian Ridge',
   },
   {
-    src: '/images/tent.png',
-    alt: 'A tent glowing from inside on a mountain meadow under a starry sky',
-    caption: 'Overnight',
+    src: '/images/hiking/shelter.jpg',
+    alt: 'Remote alpine shelter refuge cabin nestled in deep winter snow on a mountain slope',
+    caption: 'Alpine Refuge',
+  },
+  {
+    src: '/images/hiking/trail.jpg',
+    alt: 'Crisp winter snow trail leading toward a rocky alpine summit under bright sunny skies',
+    caption: 'Summit Trail',
+  },
+  {
+    src: '/images/hiking/pass.jpg',
+    alt: 'Expansive mountain pass overlooking snowy valleys and pine ridges beneath atmospheric clouds',
+    caption: 'High Pass Overlook',
   },
 ]

@@ -7,10 +7,11 @@ type RevealProps = {
   children: ReactNode
   className?: string
   delay?: number
-  as?: 'div' | 'li' | 'p' | 'span' | 'figure'
+  variant?: 'fade-up' | 'scale' | 'fade'
+  as?: 'div' | 'li' | 'p' | 'span' | 'figure' | 'section' | 'article'
 }
 
-export function Reveal({ children, className, delay = 0, as: Tag = 'div' }: RevealProps) {
+export function Reveal({ children, className, delay = 0, variant = 'fade-up', as: Tag = 'div' }: RevealProps) {
   const ref = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -23,17 +24,19 @@ export function Reveal({ children, className, delay = 0, as: Tag = 'div' }: Reve
           observer.disconnect()
         }
       },
-      { rootMargin: '0px 0px -10% 0px', threshold: 0.05 },
+      { rootMargin: '0px 0px -8% 0px', threshold: 0.05 },
     )
     observer.observe(node)
     return () => observer.disconnect()
   }, [])
 
+  const variantClass = variant === 'scale' ? 'reveal-scale' : variant === 'fade' ? 'reveal-fade' : 'reveal'
+
   return (
     <Tag
       // @ts-expect-error -- ref type is shared across the allowed intrinsic tags
       ref={ref}
-      className={cn('reveal', className)}
+      className={cn(variantClass, className)}
       style={{ '--reveal-delay': `${delay}ms` } as CSSProperties}
     >
       {children}

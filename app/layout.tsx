@@ -16,7 +16,6 @@ export const metadata: Metadata = {
   title: 'Eduardo Mailat — Developer & CS student in Cluj-Napoca',
   description:
     'Eduardo Mailat is a Computer Science and Engineering student at UTCN who builds his own apps, experiments with new technology, and spends the rest of his time on basketball courts and mountain trails.',
-  generator: 'v0.app',
   authors: [{ name: 'Eduardo Mailat' }],
   openGraph: {
     title: 'Eduardo Mailat',

@@ -62,7 +62,7 @@ export function Nav() {
         >
           <span
             aria-hidden="true"
-            className="grid size-8 place-items-center rounded-full border border-foreground/25 font-serif text-base italic transition-colors duration-300 group-hover:border-signal group-hover:text-signal"
+            className="grid size-8 place-items-center rounded-full border border-foreground/25 font-serif text-base italic transition-all duration-300 group-hover:scale-105 group-hover:border-signal group-hover:text-signal group-hover:shadow-[0_0_15px_rgba(255,106,43,0.3)]"
           >
             em
           </span>
@@ -86,7 +86,7 @@ export function Nav() {
                     aria-hidden="true"
                     className={cn(
                       'size-1.5 rounded-full bg-signal transition-all duration-300',
-                      isActive ? 'scale-100 opacity-100' : 'scale-0 opacity-0',
+                      isActive ? 'scale-100 opacity-100 shadow-[0_0_8px_rgba(255,106,43,0.8)]' : 'scale-0 opacity-0',
                     )}
                   />
                   <span className="relative">

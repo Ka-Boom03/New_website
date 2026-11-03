@@ -5,7 +5,7 @@ import { SectionLabel } from './section-label'
 
 export function Interests() {
   return (
-    <section id="interests" className="py-24 md:py-36">
+    <section id="interests" className="section-glow py-24 md:py-36">
       <div className="mx-auto max-w-[1440px] px-5 md:px-10">
         <div className="grid gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
@@ -50,7 +50,7 @@ function Basketball() {
   return (
     <div className="mt-16 md:mt-24">
       <Reveal as="figure" className="group relative mx-auto max-w-[1600px] overflow-hidden md:px-10">
-        <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[16/10] md:aspect-[21/9] md:rounded-sm">
+        <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[16/10] md:aspect-[21/9] md:rounded-md border border-transparent md:border-border/60 transition-all duration-500 hover:border-signal/40 hover:shadow-[0_20px_50px_rgba(0,0,0,0.7),0_0_30px_rgba(255,106,43,0.1)]">
           <Image
             src="/images/court.png"
             alt="An empty outdoor basketball court at dusk under a single orange streetlight"
@@ -101,30 +101,41 @@ function Outdoors() {
     <div className="mx-auto mt-28 max-w-[1440px] px-5 md:mt-40 md:px-10">
       <div className="grid gap-8 border-t border-border pt-10 md:grid-cols-12">
         <Reveal className="md:col-span-3">
-          <Chapter n="f." title="Outdoors" />
+          <Chapter n="f." title="Hiking" />
           <p className="mt-5 max-w-xs text-pretty leading-relaxed text-muted-foreground">
-            A hike or a night outside when I get the chance — not as often as I&apos;d like.
+            Mountain trails, snowy ridges, and alpine refuges in the Carpathians. When I&apos;d rather be out than in,
+            this is where I disconnect and reset.
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-2 gap-3 md:col-span-9 md:grid-cols-4 md:gap-4">
+        <div className="grid grid-cols-2 gap-3.5 md:col-span-9 md:grid-cols-4 md:gap-4">
           {photos.map((photo, i) => (
             <Reveal
               as="figure"
               key={photo.src}
-              delay={i * 80}
+              delay={i * 90}
               className={i % 2 === 1 ? 'group md:mt-10' : 'group'}
             >
-              <div className={`relative overflow-hidden rounded-sm ${photoAspects[i]}`}>
+              <div className={`relative overflow-hidden rounded-md border border-border/80 bg-card/60 transition-all duration-500 hover:border-signal/50 hover:shadow-[0_16px_36px_rgba(0,0,0,0.6),0_0_24px_rgba(255,106,43,0.12)] hover:-translate-y-1.5 ${photoAspects[i]}`}>
                 <Image
                   src={photo.src || '/placeholder.svg'}
                   alt={photo.alt}
                   fill
-                  sizes="(min-width: 768px) 20vw, 50vw"
-                  className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.04]"
+                  sizes="(min-width: 768px) 25vw, 50vw"
+                  className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.08] group-hover:brightness-105"
                 />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-40" />
+                <span className="pointer-events-none absolute right-2.5 top-2.5 rounded-full border border-foreground/15 bg-background/70 px-2 py-0.5 text-[10px] font-mono text-muted-foreground backdrop-blur-sm transition-colors group-hover:border-signal/40 group-hover:text-foreground">
+                  0{i + 1}
+                </span>
               </div>
-              <figcaption className="label mt-2">{photo.caption}</figcaption>
+              <figcaption className="label mt-2.5 flex items-center justify-between text-muted-foreground transition-colors group-hover:text-foreground">
+                <span className="flex items-center gap-1.5">
+                  <span className="size-1 rounded-full bg-signal/60 transition-colors group-hover:bg-signal" aria-hidden="true" />
+                  {photo.caption}
+                </span>
+                <span className="font-mono text-[9px] text-muted-foreground/50 transition-colors group-hover:text-signal/80">RO</span>
+              </figcaption>
             </Reveal>
           ))}
         </div>
@@ -138,7 +149,7 @@ function Travel() {
     <div className="mx-auto mt-28 max-w-[1440px] px-5 md:mt-40 md:px-10">
       <div className="relative grid md:grid-cols-12">
         <Reveal as="figure" className="group md:col-span-9 md:col-start-4">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-sm md:aspect-[16/9]">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-border/70 transition-all duration-500 hover:border-signal/40 hover:shadow-[0_20px_50px_rgba(0,0,0,0.6),0_0_30px_rgba(255,106,43,0.1)] md:aspect-[16/9]">
             <Image
               src="/images/road.png"
               alt="An empty winding road through open hills at golden hour, seen through a windshield"
@@ -150,7 +161,7 @@ function Travel() {
         </Reveal>
         <Reveal
           delay={120}
-          className="relative -mt-16 ml-5 border border-border bg-background p-6 md:absolute md:bottom-12 md:left-0 md:mt-0 md:ml-0 md:w-[38%] md:p-10"
+          className="relative -mt-16 ml-5 rounded-md border border-border bg-background/95 p-6 shadow-2xl backdrop-blur-sm transition-all duration-500 hover:border-signal/50 hover:shadow-[0_20px_45px_rgba(0,0,0,0.7),0_0_25px_rgba(255,106,43,0.12)] hover:-translate-y-1 md:absolute md:bottom-12 md:left-0 md:mt-0 md:ml-0 md:w-[38%] md:p-10"
         >
           <Chapter n="b." title="Travel" />
           <h3 className="mt-5 text-3xl font-medium leading-tight tracking-[-0.03em] md:text-4xl">
@@ -185,20 +196,20 @@ function Games() {
       <ul className="mt-10 grid grid-cols-2 gap-3 md:mt-14 md:grid-cols-4 md:gap-4">
         {games.map((game, i) => (
           <Reveal as="li" key={game.title} delay={i * 80} className="group">
-            <article className="relative aspect-[3/4] overflow-hidden rounded-sm border border-border bg-card">
+            <article className="relative aspect-[3/4] overflow-hidden rounded-md border border-border bg-card transition-all duration-500 hover:border-signal/50 hover:shadow-[0_16px_36px_rgba(0,0,0,0.6),0_0_24px_rgba(255,106,43,0.12)] hover:-translate-y-1.5">
               <Image
                 src={game.image || '/placeholder.svg'}
                 alt={game.alt}
                 fill
                 sizes="(min-width: 768px) 25vw, 50vw"
-                className="object-cover opacity-80 grayscale-[35%] transition-all duration-700 ease-out group-hover:scale-[1.06] group-hover:opacity-100 group-hover:grayscale-0"
+                className="object-cover opacity-80 grayscale-[35%] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.08] group-hover:opacity-100 group-hover:grayscale-0"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-              <span className="absolute left-4 top-4 font-serif italic text-foreground/70 transition-colors group-hover:text-signal">
+              <span className="absolute left-4 top-4 font-serif italic text-foreground/70 transition-colors duration-300 group-hover:text-signal">
                 0{i + 1}
               </span>
               <div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
-                <p className="label">{game.kind}</p>
+                <p className="label transition-colors group-hover:text-signal/90">{game.kind}</p>
                 <h4 className="mt-2 text-xl font-medium leading-tight tracking-tight md:text-2xl">{game.title}</h4>
                 <p className="mt-2 text-pretty text-sm leading-relaxed text-foreground/70 md:max-h-0 md:overflow-hidden md:opacity-0 md:transition-all md:duration-500 md:group-hover:max-h-24 md:group-hover:opacity-100">
                   {game.note}
@@ -229,7 +240,7 @@ function EditingAndMusic() {
       </Reveal>
 
       <Reveal delay={120} className="md:col-span-4 md:col-start-9">
-        <div className="flex h-full flex-col justify-between gap-10 rounded-sm border border-border bg-card p-6 md:p-8">
+        <div className="flex h-full flex-col justify-between gap-10 rounded-md border border-border bg-card p-6 transition-all duration-500 hover:border-signal/40 hover:shadow-[0_16px_36px_rgba(0,0,0,0.6),0_0_20px_rgba(255,106,43,0.08)] md:p-8">
           <div>
             <Chapter n="e." title="Music" />
             <p className="mt-6 font-serif text-3xl italic leading-tight md:text-4xl">
@@ -256,7 +267,7 @@ const clips = [
 
 function EditTimeline() {
   return (
-    <div aria-hidden="true" className="mt-10 rounded-sm border border-border bg-card p-3 md:p-4">
+    <div aria-hidden="true" className="mt-10 rounded-md border border-border bg-card p-3 transition-all duration-500 hover:border-signal/40 hover:shadow-[0_16px_36px_rgba(0,0,0,0.6),0_0_20px_rgba(255,106,43,0.08)] md:p-4">
       <div className="label mb-3 flex items-center justify-between">
         <span>montage_v3_final_final.prproj</span>
         <span className="flex items-center gap-2">
@@ -338,13 +349,13 @@ function Hardware() {
           </p>
         </Reveal>
         <Reveal as="figure" delay={120} className="group md:col-span-6 md:col-start-7">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-border/70 transition-all duration-500 hover:border-signal/40 hover:shadow-[0_20px_50px_rgba(0,0,0,0.6),0_0_24px_rgba(255,106,43,0.1)] hover:-translate-y-1">
             <Image
               src="/images/hardware.png"
               alt="Close-up of a computer motherboard with a CPU socket and memory modules in dramatic low light"
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-cover grayscale-[40%] transition-all duration-[2s] ease-out group-hover:scale-[1.04] group-hover:grayscale-0"
+              className="object-cover grayscale-[40%] transition-all duration-[2s] ease-out group-hover:scale-[1.05] group-hover:grayscale-0"
             />
           </div>
         </Reveal>

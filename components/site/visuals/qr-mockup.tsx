@@ -64,8 +64,8 @@ export function QrMockup() {
         <div className="rounded-sm bg-[#c9a77a] p-3 shadow-2xl shadow-black/60 md:p-4">
           <div className="rounded-[2px] bg-[#f3efe6] p-3 text-[#0b0b0a] md:p-4">
             <div className="flex items-baseline justify-between text-[10px] font-medium uppercase tracking-[0.15em]">
-              <span>Box 07</span>
-              <span>Garage · B</span>
+              <span className="font-semibold text-signal">BinTag</span>
+              <span>Box 07 · Garage B</span>
             </div>
             <div className="relative mt-3 aspect-square">
               <div
@@ -101,7 +101,7 @@ export function QrMockup() {
             <div className="absolute left-1/2 top-2 h-1.5 w-12 -translate-x-1/2 rounded-full bg-foreground/15" />
             <div className="flex h-full flex-col px-3 pb-3 pt-7">
               <p className="text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
-                {scanned ? 'Box 07 · Garage shelf B' : 'Scanner'}
+                {scanned ? 'BinTag · Box 07' : 'BinTag Scanner'}
               </p>
               <p className="mt-1 text-sm font-medium leading-tight md:text-base">
                 {scanned ? 'Camping & winter' : 'Point at a box'}
